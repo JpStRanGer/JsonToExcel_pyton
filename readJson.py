@@ -61,10 +61,25 @@ def write_dict_to_excel(data, excel_file):
 
 # Replace these values with your JSON file and desired keys
 json_file = 'AC800.json'
-excel_file = "excel2_file.xlsx"
+excel_file = "VeasTagTsRef.xlsx"
+
+
+if len(sys.argv) == 3:
+    print(f"you provided {json_file} as json file, and {excel_file} as exel file. generating files....")
+    # Extract the two parameters
+    json_file = sys.argv[1]
+    excel_file = sys.argv[2]
+if len(sys.argv) == 2:
+    print(f"one parameter provided. Using {sys.argv[1]} as json file, and {excel_file} as exel file.")
+    json_file = sys.argv[1]
+else:
+    print(f"No parameters provided. Using {json_file} as json file, and {excel_file} as exel file.")
+
+print(f"leng of sys.argv: {len(sys.argv)}")
 
 # Call the function to read JSON and output selected information
 json_res = read_json_and_output(json_file)
 write_dict_to_excel(json_res, excel_file)
+
 
 
